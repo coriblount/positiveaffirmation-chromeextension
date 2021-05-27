@@ -1,21 +1,41 @@
-import React, { Component } from 'react'
-import Bucketlist from './containers/Bucketlist'
-
+import React from 'react'
+import { Link } from 'react-router-dom';
+import { Card, CardBody, CardTitle} from 'reactstrap';
 //maps through bucketlist
+//return trips on bucketlist
 
-class BucketlistList extends Component {
-renderList = () => {
-return this.props.bucketlist.map(bucketlist => {
-  return <Bucketlist key={bucketlist.id} singleActivity={bucketlist}/>
-})
-}
 
-    render() {
-        return(
+const BucketlistList = props => {
+
+    return (
         <div>
-            {this.renderList()}
-        </div>)
-    }
-}
+        <h3>Your Bucketlist Trips</h3>
 
-export default BucketlistList
+        {props.trips.map(trip => {
+            if (trip.bucket_list === true) {
+            return (
+                <Link key={trip.id} to={`/trip/${trip.id}`}>
+                <Card key={trip.id}>
+                    <CardBody>
+                    <CardTitle>{trip.name} - {trip.destination}</CardTitle>
+                    </CardBody>
+                </Card>
+                </Link>
+            )
+            } else {
+            return (
+                null
+            )
+            }
+        })}
+        </div>
+    );
+    };
+    
+    export default BucketlistList;
+
+
+
+
+
+

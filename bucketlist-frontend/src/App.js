@@ -54,12 +54,11 @@ let reqPackage = {
   method: 'POST',
 	headers:{
 	"Content-Type": "application/json",
-  "Accept": "application/json",
-  "Authorization": `Bearer ${localStorage.token}`
+  "Accept": "application/json"
 	},
 	body: JSON.stringify(user)
 }
-fetch('http://localhost:3000/api/v1/users', reqPackage)
+fetch('http://localhost:3000/api/v1/login', reqPackage)
 	.then(res => res.json())
 	.then(data=> {
 	localStorage.setItem("token", data.jwt)
@@ -126,7 +125,7 @@ renderRedirect = () => {
   
 render() {
   return (
-   
+  
     <div className="App">
       <Router>
       <Link to="/Dashboard">User Dashboard</Link>
@@ -142,11 +141,13 @@ render() {
             <Route exact path='/dashboard' component={Dashboard}>
               <Dashboard deleteUser={this.deleteUser}/>
             </Route>
-            <Route exact path='/trip' component={Trip}>
+            <Route exact path='/trips' component={Trip}>
               <Trip />
             </Route>"
-            <Route exact path='/' component={TripForm}>
+            <Route exact path='/tripform' component={TripForm}>
               <TripForm/>
+            </Route>
+            <Route >
             </Route>
           </Switch>
           <br></br>

@@ -6,6 +6,7 @@ import TripForm from '../TripForm';
 import TripShow from '../TripShow';
 import TripList from '../TripList'
 import PreviousTrips from '../PreviousTrips';
+import BucketlistList from '../BucketlistList';
 
 class Trip extends React.Component {
     componentDidMount(){
@@ -15,11 +16,14 @@ class Trip extends React.Component {
     render(){
         return(
             <div>
+                <TripForm/>
+
                 <Switch>
-                    <Route path='/trips/new' component={TripForm}/>
+                    {/* <Route path='/trips/new' component={TripForm}/> */}
                     <Route path='trips/:id' render={(routerProps) => <TripShow {...routerProps} trips={this.props.trips}/>} />
                     <Route path='/trips' render={(routerProps) => <TripList {...routerProps} trips={this.props.trips} />} />
                     <Route path='/trips/visited' render={(routerProps) => <PreviousTrips {...routerProps} trips={this.props.trips}/>} />
+                    <Route path='/trips/bucketlist' render={(routerProps) => <BucketlistList {...routerProps} trips={this.props.trips} />} />
                 </Switch>
             </div>
         )

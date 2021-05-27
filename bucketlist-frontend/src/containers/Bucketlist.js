@@ -1,12 +1,21 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { Route, Switch } from 'react-router-dom';
-import { fetchTrips } from '../actions/Trips';
-import TripShow from './TripShow'
+import BucketlistActivityList from '../BucketlistActivityList';
+import BucketlistForm from '../BucketlistForm';
 
 
 
+class Bucketlist extends React.Component {
 
-//show this users bucketlist
-//update bucketlist
-//render & show list of completed bucketlist activities
+    render() {
+        return(
+            <div>
+                <BucketlistForm trips={this.props.trips}/>
+                <BucketlistActivityList bucketlist_items={this.props.trips && this.props.bucketlist_items}/>
+
+            </div>
+        )
+    }
+}
+
+
+export default Bucketlist

@@ -3,8 +3,8 @@ import React from 'react'
 const Signup = (props) => {
     
         return(
-     <div className="login-wrapper">
-     <br></br>
+        <div className="login-wrapper">
+        <br></br>
       <br></br>
       <br></br>
       <h3>Create An Account</h3>
@@ -18,7 +18,7 @@ const Signup = (props) => {
         </div>
       </form>
     </div>
-     )
+      )
 }
 
 export default Signup

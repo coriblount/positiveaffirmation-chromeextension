@@ -5,12 +5,12 @@ import {Col, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 
 class TripForm extends React.Component {
-   state = {
-       name: '',
-       destination: '',
-       startDate: '',
-       endDate: ''
-   } 
+    state = {
+          name: '',
+          destination: '',
+          startDate: '',
+          endDate: ''
+    } 
 handleChange = (e) => {
 e.preventDefault()
 this.setState({
@@ -56,14 +56,14 @@ render(){
 <FormGroup row>
   <Label for='startDate'>Start Date</Label>
   <Col>
-    <Input type='text' name='image' value={this.state.startDate} onChange={this.handleChange} />
+    <Input type='text' name='startDate' value={this.state.startDate} onChange={this.handleChange} />
   </Col>
 </FormGroup>
 
 <FormGroup row>
   <Label for='endDate'>End Date</Label>
   <Col>
-    <Input type='text' name='image' value={this.state.endDate} onChange={this.handleChange} />
+    <Input type='text' name='startDate' value={this.state.endDate} onChange={this.handleChange} />
   </Col>
 </FormGroup>
 

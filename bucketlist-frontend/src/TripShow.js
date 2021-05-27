@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Card, CardBody, CardTitle, Button } from 'reactstrap';
 import { deleteTrip, toggleBucketList, toggleVisited } from './actions/Trips';
+import BucketlistList from './BucketlistList';
 
 
 const TripShow = props => {
@@ -27,7 +28,6 @@ const TripShow = props => {
       <Card className = 'TripShow'>
       <CardBody>
           <CardTitle style={{border: 'dotted' }}>{trip && trip.name} - {trip && trip.destination}</CardTitle>
-     
         </CardBody>
         <Button onClick={handleVisited} className='VisitedButton' >
           {trip && trip.visited === false ? 'Add to Visited' : 'You Have Visited'}
@@ -38,7 +38,7 @@ const TripShow = props => {
         <Button onClick={handleDelete} className='DeleteButton'>Delete This Trip</Button>
       </Card>
 
-      {/* <Bucketlist trip={trip} /> */}
+      <BucketlistList trip={trip} />
     </div>
   );
 };

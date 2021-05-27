@@ -1,23 +1,36 @@
 
+//authorization headers for all 
 
-// fetch all destinations 
+
+// fetch all trips
 export const fetchTrips = () => {
     return (dispatch) => {
-      fetch('http://localhost:3000/api/v1/trips')
+      fetch('http://localhost:3000/api/v1/trips',{
+        method: 'GET',
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        'Authorization': `Bearer ${localStorage.token}`
+      })
       .then(res => res.json())
-      .then(trips => dispatch({
+      .then(trips => 
+      dispatch({
         type: 'FETCH_TRIPS',
-        payload: trips
-      }))
+        payload: trips      
+      })
+      )
     };
   };
 
-  // add destinations
+  // add trips
   export const addTrips = (tripData, history, path) => {
     return (dispatch) => {
       fetch('http://localhost:3000/api/v1/trips', {
         method: 'POST',
-        headers: {'Content-Type': 'application/json'},
+        headers: {
+          'Content-Type': 'application/json',
+          "Accept": "application/json",
+          'Authorization': `Bearer ${localStorage.token}`
+        },
         body: JSON.stringify(tripData)
       })
       .then(res => res.json())
@@ -28,11 +41,13 @@ export const fetchTrips = () => {
     };
   };
 
-  //delete destinations 
+  //delete trips
   export const deleteTrip = tripId => {
     return (dispatch) => {
       fetch(`http://localhost:3000/destinations/${tripId}`, {
-        method: 'DELETE'
+        method: 'DELETE',
+        "Accept": "application/json",
+        'Authorization': `Bearer ${localStorage.token}`
       })
       .then(res => res.json())
       .then(trip => {
@@ -42,14 +57,17 @@ export const fetchTrips = () => {
   };
   
 
-  // add destination to bucketlist with fetch
-   export const toggleBucketList = (trip, tripId) => {
+  // add trip to bucketlist with fetch
+      export const toggleBucketList = (trip, tripId) => {
     const updatedBucketList = {...trip, bucket_list: !trip.bucket_list};
   
     return (dispatch) => {
       fetch(`http://localhost:3000/destinations/${tripId}`, {
         method: 'PATCH',
-        headers: {'Content-Type': 'application/json'},
+        headers: {'Content-Type': 'application/json',
+        "Accept": "application/json",
+        'Authorization': `Bearer ${localStorage.token}`
+      },
         body: JSON.stringify({trip: updatedBucketList})
       })
       .then(res => res.json())
@@ -65,7 +83,10 @@ export const fetchTrips = () => {
     return (dispatch) => {
       fetch(`http://localhost:3000/destinations/${tripId}`, {
         method: 'PATCH',
-        headers: {'Content-Type': 'application/json'},
+        headers: {'Content-Type': 'application/json',
+        "Accept": "application/json",
+        'Authorization': `Bearer ${localStorage.token}`
+      },
         body: JSON.stringify({trip: updatedVisited})
       })
       .then(res => res.json())

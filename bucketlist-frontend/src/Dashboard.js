@@ -2,7 +2,7 @@ import React from 'react'
 
 const Dashboard = (props) => {
     return(
-        <div>
+        <div className="dashBoard">
             <h3>Welcome, User</h3>
             <h1>What have you ALWAYS wanted to do?</h1>
             <h1>Where have you ALWAYS wanted to go?</h1>
