@@ -20,15 +20,15 @@ this.setState({
 
 handleSubmit = (e) => {
 e.preventDefault()
+console.log("clicked")
 const path = `/Trip`;
-this.props.addTrip(this.state, this.props.history, path);
+this.props.addTrips(this.state, this.props.history, path);
 this.setState({
   name: '',
   destination: '',
   startDate: '',
   endDate: ''
 })
-
 }
 render(){
     return(
@@ -63,11 +63,11 @@ render(){
 <FormGroup row>
   <Label for='endDate'>End Date</Label>
   <Col>
-    <Input type='text' name='startDate' value={this.state.endDate} onChange={this.handleChange} />
+    <Input type='text' name='endDate' value={this.state.endDate} onChange={this.handleChange} />
   </Col>
 </FormGroup>
 
-<Button>Add Destination</Button>
+<Button>Add </Button>
 </Form>
  </div>
  )

@@ -1,4 +1,8 @@
-const tripReducer = (state = { trips: [] }, action) => {
+const initialState = {
+  trips: []
+}
+
+const tripReducer = (state =  initialState, action) => {
 
     switch (action.type) {
   

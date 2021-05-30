@@ -9,8 +9,13 @@ import NavBar from './NavBar'
 import {Redirect, Link} from 'react-router-dom'
 import Trip from './containers/Trip';
 import TripForm from './TripForm';
+import TripShow from './TripShow'
+
+
+
 
 //componentdidmount-- to get userinfo
+
 
 
 //handles user login/signup
@@ -21,9 +26,12 @@ class App extends React.Component {
 state = {
   isLoggedIn: false,
   users : [],
-  currentUser: ''
+  currentUser: {}
 
 }
+
+
+
 
 
 getUsers = () => {
@@ -44,7 +52,7 @@ getUsers = () => {
     });
 }
 
-handleLogin = (e) => {
+handleLogin = (e, history) => {
 e.preventDefault()
 let user = {
   username: e.target[0].value,
@@ -64,9 +72,12 @@ fetch('http://localhost:3000/api/v1/login', reqPackage)
 	localStorage.setItem("token", data.jwt)
 	this.getUsers()
 	this.setState({
-	isLoggedIn: true
+	isLoggedIn: true,
+  currentUser: data
 	})
+  history.push("/dashboard")
 })
+
 }
 
 
@@ -139,11 +150,11 @@ render() {
               <Signup handleSignup={this.handleSignup}/>
             </Route>
             <Route exact path='/dashboard' component={Dashboard}>
-              <Dashboard deleteUser={this.deleteUser}/>
+              <Dashboard currentUser={this.state.currentUser} deleteUser={this.deleteUser}/>
             </Route>
             <Route exact path='/trips' component={Trip}>
               <Trip />
-            </Route>"
+            </Route>
             <Route exact path='/tripform' component={TripForm}>
               <TripForm/>
             </Route>

@@ -5,9 +5,13 @@ import { deleteTrip, toggleBucketList, toggleVisited } from './actions/Trips';
 import BucketlistList from './BucketlistList';
 
 
-const TripShow = props => {
 
-  let trip = props.trips.filter(trip => trip.id === props.match.params.id)[0];
+
+const TripShow = (props) => {
+  console.log(props)
+
+  let trip = props.trips.filter(trip => trip.id === props.trips[0].id) ;
+
 
   const handleDelete = () => {
     props.deleteTrip(trip.id);
@@ -25,6 +29,7 @@ const TripShow = props => {
 
   return (
     <div>
+    
       <Card className = 'TripShow'>
       <CardBody>
           <CardTitle style={{border: 'dotted' }}>{trip && trip.name} - {trip && trip.destination}</CardTitle>
@@ -38,7 +43,7 @@ const TripShow = props => {
         <Button onClick={handleDelete} className='DeleteButton'>Delete This Trip</Button>
       </Card>
 
-      <BucketlistList trip={trip} />
+      {trip && <BucketlistList trip={trip} />}
     </div>
   );
 };

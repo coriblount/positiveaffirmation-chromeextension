@@ -3,8 +3,8 @@
 
 
 // fetch all trips
-export const fetchTrips = () => {
-    return (dispatch) => {
+export const fetchTrips = (dispatch) => {
+
       fetch('http://localhost:3000/api/v1/trips',{
         method: 'GET',
         "Content-Type": "application/json",
@@ -12,14 +12,14 @@ export const fetchTrips = () => {
         'Authorization': `Bearer ${localStorage.token}`
       })
       .then(res => res.json())
-      .then(trips => 
+      .then(trips =>
       dispatch({
         type: 'FETCH_TRIPS',
-        payload: trips      
+        payload: trips     
       })
       )
     };
-  };
+
 
   // add trips
   export const addTrips = (tripData, history, path) => {
@@ -35,8 +35,8 @@ export const fetchTrips = () => {
       })
       .then(res => res.json())
       .then(trip => {
-        history.push(path)
-        dispatch({type: 'ADD_DESTINATION', payload: trip})
+        // history.push(path)
+        dispatch({type: 'ADD_TRIPS', payload: trip})
       })
     };
   };

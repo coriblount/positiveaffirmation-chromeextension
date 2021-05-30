@@ -6,6 +6,8 @@ import { Card, CardBody, CardTitle } from 'reactstrap';
 //shows list of user trips 
 const TripList = props => {
 
+
+
   return (
     <div className='TripContainer'>
       <Link to='/trips/new' className='AddTripButton' role='button'>Add A New Trip</Link>

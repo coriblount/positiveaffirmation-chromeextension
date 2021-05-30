@@ -6,12 +6,10 @@ import { Card, CardBody, CardTitle} from 'reactstrap';
 
 
 const BucketlistList = props => {
-
     return (
         <div>
         <h3>Your Bucketlist Trips</h3>
-
-        {props.trips.map(trip => {
+        {props.trips && props.trips.map(trip => {
             if (trip.bucket_list === true) {
             return (
                 <Link key={trip.id} to={`/trip/${trip.id}`}>
