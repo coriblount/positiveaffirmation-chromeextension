@@ -4,15 +4,18 @@ import BucketlistForm from '../BucketlistForm';
 
 
 
+
 class Bucketlist extends React.Component {
+
+
 
     render() {
         return(
             <div>
-                <BucketlistForm trips={this.props.trips}/>
-                <BucketlistActivityList bucketlist_items={this.props.trips && this.props.bucketlist_items}/>
-
+                <BucketlistForm trip={this.props.trip}/>
+            { this.props.trip && <BucketlistActivityList bucketlist_items={this.props.trip.bucketlist_items}/>}
             </div>
+            
         )
     }
 }

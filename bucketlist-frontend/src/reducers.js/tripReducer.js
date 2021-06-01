@@ -1,5 +1,6 @@
 const initialState = {
-  trips: []
+  trips: [],
+  bucketlist_item: []
 }
 
 const tripReducer = (state =  initialState, action) => {
@@ -26,16 +27,19 @@ const tripReducer = (state =  initialState, action) => {
           }
         })
         return {...state, trips: trip}
+
+        case 'FETCH_ACTIVITY':
+        return {...state, bucketlist_item: action.payload};
   
       case 'ADD_ACTIVITY':
-        const addActivityTrip = state.trips.map(trip => {
+        const addActivity = state.trips.map(trip => {
           if (trip.id === action.payload.id) {
             return action.payload
           } else {
             return trip
           }
         })
-        return {...state, trips: addActivityTrip}
+        return {...state, bucketlist_item: [...state.bucketlist_item, action.payload] , trips: addActivity}
   
       case 'DELETE_ACTIVITY':
         const deleteActivityTrip = state.trips.map(trip => {

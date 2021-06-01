@@ -42,9 +42,9 @@ export const fetchTrips = (dispatch) => {
   };
 
   //delete trips
-  export const deleteTrip = tripId => {
+  export const deleteTrip = trip => {
     return (dispatch) => {
-      fetch(`http://localhost:3000/destinations/${tripId}`, {
+      fetch(`http://localhost:3000/api/v1/trips/${trip.id}`, {
         method: 'DELETE',
         "Accept": "application/json",
         'Authorization': `Bearer ${localStorage.token}`
@@ -62,7 +62,7 @@ export const fetchTrips = (dispatch) => {
     const updatedBucketList = {...trip, bucket_list: !trip.bucket_list};
   
     return (dispatch) => {
-      fetch(`http://localhost:3000/destinations/${tripId}`, {
+      fetch(`http://localhost:3000/api/v1/trips/${tripId}`, {
         method: 'PATCH',
         headers: {'Content-Type': 'application/json',
         "Accept": "application/json",
@@ -81,7 +81,7 @@ export const fetchTrips = (dispatch) => {
     const updatedVisited = {...trip, visited: !trip.visited};
   
     return (dispatch) => {
-      fetch(`http://localhost:3000/destinations/${tripId}`, {
+      fetch(`http://localhost:3000/api/v1/trips/${tripId}`, {
         method: 'PATCH',
         headers: {'Content-Type': 'application/json',
         "Accept": "application/json",

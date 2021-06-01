@@ -1,14 +1,33 @@
 
+
+export const fetchActivity = (dispatch) => {
+fetch('http://localhost:3000/api/v1/bucketlist_items' , {
+  method: 'GET',
+  "Content-Type": "application/json",
+  "Accept": "application/json",
+  'Authorization': `Bearer ${localStorage.token}`
+})
+.then(res => res.json())
+.then(data => {
+  dispatch({
+    type: 'FETCH_ACTIVITY',
+    payload: data   
+  })
+})
+}
+
+
+
 // adds activities with fetch
-export const addActivity = (activity, tripId) => {
+export const addActivity = (bucketlist_item, tripObject) => {
     return (dispatch) => {
-      fetch(`http://localhost:3000/api/v1/trips/${tripId}/bucketlist_items`, {
+      fetch(`http://localhost:3000/api/v1/bucketlist_items/`, {
         method: 'POST',
         headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json', 
         'Authorization': `Bearer ${localStorage.token}`},
-        body: JSON.stringify(activity)
+        body: JSON.stringify({bucketlist_item: bucketlist_item, tripObject: tripObject})
       })
       .then(res => res.json())
       .then(trip => {

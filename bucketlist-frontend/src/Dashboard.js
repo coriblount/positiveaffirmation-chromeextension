@@ -1,10 +1,11 @@
+import userEvent from '@testing-library/user-event';
 import React from 'react'
 import './App.css';
 
 const Dashboard = (props) => {
     return(
         <div className="dashBoard">
-            <h3>Welcome, User</h3>
+            <h3>Welcome, to the Bucketlist App</h3>
             <h1>What have you ALWAYS wanted to do?</h1>
             <h1>Where have you ALWAYS wanted to go?</h1>
 

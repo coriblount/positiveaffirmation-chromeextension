@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { ListGroup, ListGroupItem, Button } from 'reactstrap';
-import { deleteActivity } from '../actions/BucketlistActions'
+import { deleteActivity } from './actions/BucketlistActions'
+import PreviousTrips from './PreviousTrips';
 
 const BuckletlistActivityList = (props) => {
-
-
+console.log(props.bucketlist_items)
 
     return(
         <div>
@@ -13,7 +13,7 @@ const BuckletlistActivityList = (props) => {
             <ListGroup>
                 {props.bucketlist_items && props.bucketlist_items.map(bucketlist =>
                     <ListGroupItem key={bucketlist.id}> {bucketlist.name}
-                    <Button onClick={() => handleDelete(bucketlist)}> Delete This Item from Bucketlist!</Button>
+                    <Button onClick={() => this.handleDelete(bucketlist)}> Delete This Item from Bucketlist!</Button>
                     </ListGroupItem>  
                     
                         )}

@@ -1,22 +1,24 @@
 import React from 'react';
+import { isCompositeComponent } from 'react-dom/test-utils';
 import { connect } from 'react-redux';
 import { Card, CardBody, CardTitle, Button } from 'reactstrap';
 import { deleteTrip, toggleBucketList, toggleVisited } from './actions/Trips';
-import BucketlistList from './BucketlistList';
-
+// import Bucketlist from './Bucketlist';
+import Bucketlist from './containers/Bucketlist';
 
 
 
 const TripShow = (props) => {
   console.log(props)
 
-  let trip = props.trips.filter(trip => trip.id === props.trips[0].id) ;
+  let trip = props.trips.find(trip => trip.id === props.trips[0].id) ;
+  console.log(trip)
 
 
   const handleDelete = () => {
     props.deleteTrip(trip.id);
-    const path = `/trips`;
-    props.history.push(path);
+    // const path = `/trips`;
+    // props.history.push(path);
   };
 
   const handleVisited = () => {
@@ -27,7 +29,9 @@ const TripShow = (props) => {
     props.toggleBucketList(trip, trip.id)
   }
 
+
   return (
+   
     <div>
     
       <Card className = 'TripShow'>
@@ -43,7 +47,7 @@ const TripShow = (props) => {
         <Button onClick={handleDelete} className='DeleteButton'>Delete This Trip</Button>
       </Card>
 
-      {trip && <BucketlistList trip={trip} />}
+      {trip && <Bucketlist trip={trip} />}
     </div>
   );
 };

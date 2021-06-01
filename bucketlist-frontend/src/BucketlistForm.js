@@ -1,12 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import { Col, Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import { addActivity } from '../actions/BucketlistActions';
+import { addActivity } from './actions/BucketlistActions';
 //form that adds to bucketlist list
 //add image for bucketlist activity?
 
 
 class BucketlistForm extends React.Component {
+
 state = {
 name: '',
 description: ''
@@ -18,9 +19,11 @@ this.setState({
 })
 }
 
-handleSubmit = (e) => {
+handleSubmit = (e, trip_id) => {
 e.preventDefault()
-this.props.addActivity(this.state, this.props.trip.id)
+// const tripId = this.props.trip.id
+const tripObject = this.props.trip
+this.props.addActivity({...this.state, tripObject})
 this.setState({
     name: '',
     description: ''
@@ -29,9 +32,9 @@ this.setState({
 
 
 render(){
-    return(
+    return( 
         <div>
-            <Form onSubmit={this.handleSubmit}> 
+            <Form onSubmit={(e) => this.handleSubmit(e, this.props.trip)}> 
                     <h5>Add a Bucketlist Activity</h5>
                     <FormGroup row>
                     <Label> Things I'd like To Do: </Label>
@@ -57,4 +60,4 @@ render(){
 
 export default connect(null, { addActivity })(BucketlistForm);
 
-export default BucketlistForm
+// export default BucketlistForm

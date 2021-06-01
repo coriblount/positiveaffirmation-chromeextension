@@ -9,6 +9,8 @@ import BucketlistList from '../BucketlistList';
 import {useSelector} from 'react-redux'
 import React,{useEffect} from 'react'
 import {useDispatch} from 'react-redux'
+import BucketlistForm from '../BucketlistForm'
+import BucketlistActivityList from '../BucketlistActivityList';
 
 
 
@@ -34,8 +36,9 @@ console.log(tripState)
                 <TripList trips={tripState.trips} />
                 { tripState.trips && <TripShow trips={tripState.trips}/>}
                 {tripState.trips && <PreviousTrips trips={tripState.trips}/> }
-                
                 {tripState.trips && <BucketlistList trips={tripState.trips}/>}
+
+
                 
                 {/* <Router> */}
                 {/* <Switch> */}

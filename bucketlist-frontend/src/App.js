@@ -1,7 +1,7 @@
 
 import './App.css';
 import React from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, useHistory } from 'react-router-dom';
 import Login from './Login/login'
 import Signup from './Login/signup'
 import Dashboard from './Dashboard';
@@ -10,6 +10,7 @@ import {Redirect, Link} from 'react-router-dom'
 import Trip from './containers/Trip';
 import TripForm from './TripForm';
 import TripShow from './TripShow'
+import Bucketlist from './containers/Bucketlist';
 
 
 
@@ -133,6 +134,9 @@ renderRedirect = () => {
   }
 }
 
+
+
+
   
 render() {
   return (
@@ -159,6 +163,7 @@ render() {
               <TripForm/>
             </Route>
             <Route >
+              <Bucketlist/>
             </Route>
           </Switch>
           <br></br>

@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-image: url('https://i.pinimg.com/originals/23/ba/19/23ba19bb7553043331590401ce7ba06f.jpg');
 }
 
 .App-logo {
@@ -36,7 +37,7 @@
     transform: rotate(360deg);
   }
 }
-
+/* 
 .dashBoard {
-  background-image: url('https://cdn.statically.io/img/wallpaperaccess.com/full/185289.jpg');
-}
+  background-image: url('https://i.pinimg.com/originals/23/ba/19/23ba19bb7553043331590401ce7ba06f.jpg');
+} */
