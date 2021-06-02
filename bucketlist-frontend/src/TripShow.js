@@ -9,10 +9,10 @@ import Bucketlist from './containers/Bucketlist';
 
 
 const TripShow = (props) => {
-  console.log(props)
+  
 
-  let trip = props.trips.find(trip => trip.id === props.trips[0].id) ;
-  console.log(trip)
+  let trip = props.trips.find(trip => trip.id === props.trips[3].id) ;
+  // let trip = props.trips.filter(trip => trip.id === props.trips.id)
 
 
   const handleDelete = () => {
@@ -31,7 +31,7 @@ const TripShow = (props) => {
 
 
   return (
-   
+
     <div>
     
       <Card className = 'TripShow'>

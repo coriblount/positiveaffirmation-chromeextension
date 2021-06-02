@@ -27,7 +27,7 @@ export const addActivity = (bucketlist_item, tripObject) => {
         'Content-Type': 'application/json',
         'Accept': 'application/json', 
         'Authorization': `Bearer ${localStorage.token}`},
-        body: JSON.stringify({bucketlist_item: bucketlist_item, tripObject: tripObject})
+        body: JSON.stringify({ bucketlist_item: bucketlist_item, tripObject: tripObject})
       })
       .then(res => res.json())
       .then(trip => {
@@ -37,19 +37,14 @@ export const addActivity = (bucketlist_item, tripObject) => {
   };
 
   // deletes activities with fetch
-  export const deleteActivity = (activityId, tripId) => {
+  export const deleteActivity = (bucketlistId) => {
     return (dispatch) => {
-      fetch(`http://localhost:3000/api/v1/trips/${tripId}/bucketlist_items/${activityId}`, {
+      fetch(`http://localhost:3000/api/v1/bucketlist_items/${bucketlistId}`, {
         method: 'DELETE',
-        headers: {
-        'Content-Type': 'application/json',
-        "Accept": "application/json",
-        'Authorization': `Bearer ${localStorage.token}`
-      },
     })
       .then(res => res.json())
       .then(trip =>
-        dispatch({type: 'DELETE_ACTIVITY', payload: trip})
+        dispatch({type: 'DELETE_ACTIVITY', payload: trip.id})
       )
     };
   };

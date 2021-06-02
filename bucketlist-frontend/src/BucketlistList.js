@@ -5,11 +5,12 @@ import { Card, CardBody, CardTitle} from 'reactstrap';
 
 
 const BucketlistList = props => {
-    console.log(props)
     return (
         <div>
         <h3>Your Bucketlist Trips</h3>
+            
         {props.trips && props.trips.map(trip => {
+            console.log(trip.bucketlist)
             if (trip.bucketlist === true) {
             return (
                 <Link key={trip.id} to={`/trip/${trip.id}`}>
@@ -20,9 +21,10 @@ const BucketlistList = props => {
                 </Card>
                 </Link>
             )
-            } else {
+            } 
+            else {
             return (
-                "nothing found"
+                "No items in Bucketlist"
             )
             }
         })}

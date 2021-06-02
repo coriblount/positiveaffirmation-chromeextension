@@ -10,6 +10,7 @@ class Bucketlist extends React.Component {
 
 
     render() {
+        console.log(this.props.trip)
         return(
             <div>
                 <BucketlistForm trip={this.props.trip}/>

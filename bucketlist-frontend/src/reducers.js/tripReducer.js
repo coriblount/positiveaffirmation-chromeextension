@@ -42,14 +42,19 @@ const tripReducer = (state =  initialState, action) => {
         return {...state, bucketlist_item: [...state.bucketlist_item, action.payload] , trips: addActivity}
   
       case 'DELETE_ACTIVITY':
-        const deleteActivityTrip = state.trips.map(trip => {
-          if (trip.id === action.payload.id) {
-            return action.payload
-          } else {
-            return trip
-          }
-        })
-        return {...state, trips: deleteActivityTrip}
+        console.log(state.bucketlist_item)
+        const filteredActivity = state.trips.filter(trip=> trip.id !== action.payload)
+        return {...state, trips: filteredActivity}
+
+        // const deleteActivityTrip = state.trips.map(trip => {
+        //   if (trip.id === action.payload.id) {
+        //     return action.payload
+        //   } else {
+        //     return trip
+        //   }
+        // })
+        // return {trips: state.trips.filter(trip => trip.id !== action.payload)}
+          // , trips: deleteActivity}
   
       default:
         return state;
