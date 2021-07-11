@@ -1,0 +1,14 @@
+{
+  "manifest_version": 2,
+  "name": "Positive Thoughts",
+  "author": "Cori Blount", 
+  "version": "1.0.1",
+  "description": "Replaces new screen tab with a positive affirmation.",
+  "icons": {
+    "16": "icon.ico"
+  },
+
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  }
+}
